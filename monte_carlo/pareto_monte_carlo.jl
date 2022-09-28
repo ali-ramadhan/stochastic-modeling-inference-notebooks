@@ -1,5 +1,9 @@
 ### A Pluto.jl notebook ###
-# v0.19.9
+# v0.19.12
+
+#> [frontmatter]
+#> title = "Life without a Central Limit Theorem (featuring Pareto distributions)"
+#> date = "2022-09-28"
 
 using Markdown
 using InteractiveUtils
@@ -12,6 +16,11 @@ begin
     plotly()
 end
 
+# ╔═╡ 6327305e-b30d-4c82-97f7-68bf9e6e51ef
+md"""
+We define the probability density function for the Pareto distribution.
+"""
+
 # ╔═╡ 98230f9e-1712-4806-b349-f9a306cf09c8
 p(x, α=3/2) = x >= 1 ? α / x^(α+1) : 0
 
@@ -22,7 +31,7 @@ F(x, α=3/2) = x >= 1 ? 1 - x^(-α) : 0
 F⁻¹(x, α=3/2) = (1 - x)^(-1/α)
 
 # ╔═╡ b5046d9e-93c6-42e7-b311-7ce35ca95ffb
-pareto_mean(α=3/2) = α > 1 ? α / (α - 1) : ∞
+pareto_mean(α=3/2) = α > 1 ? α / (α - 1) : Inf
 
 # ╔═╡ 0932c3c0-a503-4114-a662-81d2341d2490
 function sample_pareto(N, α=3/2)
@@ -166,7 +175,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.1"
 manifest_format = "2.0"
-project_hash = "f8c9ce40fe9e9ec34fb01d11b1f066c4cb0a20c1"
+project_hash = "d7e9264fdd7e89f764ad41108d2967269912c05b"
 
 [[deps.ArgTools]]
 uuid = "0dad84c5-d112-42e6-8d28-ef12dabb789f"
@@ -296,10 +305,10 @@ uuid = "c87230d0-a227-11e9-1b43-d7ebe4e7570a"
 version = "0.4.1"
 
 [[deps.FFMPEG_jll]]
-deps = ["Artifacts", "Bzip2_jll", "FreeType2_jll", "FriBidi_jll", "JLLWrappers", "LAME_jll", "Libdl", "Ogg_jll", "OpenSSL_jll", "Opus_jll", "Pkg", "Zlib_jll", "libaom_jll", "libass_jll", "libfdk_aac_jll", "libvorbis_jll", "x264_jll", "x265_jll"]
-git-tree-sha1 = "ccd479984c7838684b3ac204b716c89955c76623"
+deps = ["Artifacts", "Bzip2_jll", "FreeType2_jll", "FriBidi_jll", "JLLWrappers", "LAME_jll", "Libdl", "Ogg_jll", "OpenSSL_jll", "Opus_jll", "PCRE2_jll", "Pkg", "Zlib_jll", "libaom_jll", "libass_jll", "libfdk_aac_jll", "libvorbis_jll", "x264_jll", "x265_jll"]
+git-tree-sha1 = "40c63abc94311b4e2bff4cd9a6a59bda1873c95b"
 uuid = "b22a6f82-2f65-5046-a5b2-351ab43fb4e5"
-version = "4.4.2+0"
+version = "4.4.2+1"
 
 [[deps.FileWatching]]
 uuid = "7b1f6079-737a-58dc-b8bc-7a2ca5c1b5ee"
@@ -642,6 +651,11 @@ version = "1.3.2+0"
 git-tree-sha1 = "85f8e6578bf1f9ee0d11e7bb1b1456435479d47c"
 uuid = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
 version = "1.4.1"
+
+[[deps.PCRE2_jll]]
+deps = ["Artifacts", "Libdl"]
+uuid = "efcefdf7-47ab-520b-bdef-62a2eaa19f15"
+version = "10.40.0+0"
 
 [[deps.PCRE_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1088,13 +1102,14 @@ version = "1.4.1+0"
 
 # ╔═╡ Cell order:
 # ╠═92318297-1621-4005-b44c-e5b7ceb1ca2f
+# ╟─6327305e-b30d-4c82-97f7-68bf9e6e51ef
 # ╠═98230f9e-1712-4806-b349-f9a306cf09c8
 # ╠═b9ee86a3-1590-4d94-aa73-8c63b1012ec7
 # ╠═19ced796-8328-46b4-acc6-cf0dd5215c0d
 # ╠═b5046d9e-93c6-42e7-b311-7ce35ca95ffb
 # ╠═0932c3c0-a503-4114-a662-81d2341d2490
 # ╠═5fe9e66e-6806-42d8-a4e8-dfb5198518c2
-# ╠═e786d3d1-b2d7-41d4-b602-9027b65cb1c9
+# ╟─e786d3d1-b2d7-41d4-b602-9027b65cb1c9
 # ╠═ef81dd91-aaf5-4f36-848d-7e1b4ab8aa77
 # ╠═79d55abd-bd4d-45bc-99ca-d621f48b2838
 # ╠═3ab2861e-7997-4e9f-bd06-cfaf01ea3080
